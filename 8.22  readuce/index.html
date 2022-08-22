@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = []
+        for (let i = 1; i <= 100; i++) {
+            arr.push(i)
+        }
+        // console.log(arr);
+        //sum 累加器 item  数组中的每一项
+        let number = arr.reduce((sum, item) => {
+            return sum += item
+        })
+        console.log(number);
+
+
+        function process(url) {
+            //.... 使用reduce
+            let str = url.match(/\?(\S*)#/)[1]
+            for (let i = 0; i < str.length; i++) {
+                if (str.indexOf('&')) {
+                    str = str.replace('&', ',')
+                }
+            }
+            const arr = str.split(',')
+            console.log(arr);
+          let newarry = arr.reduce((acc,item) => {
+             let ind = item.split('=')
+             if(ind[1] > 0) {
+                ind[1] = ind[1] * 1
+             }
+            //  console.log(ind);
+            acc[ind[0]] = ind[1]
+             return acc
+            },{})
+            return newarry
+        }
+ console.log(process('http://www.baidu.com/?name=zhangsan&age=18&sex=nan#'));
+        process('http://www.baidu.com/?name=zhangsan&age=18&sex=nan#')
+        // 输出:  { name:"zhangsan",age:18,sex:nan }
+
+        // let str = 'ycc?name=cc&sex=woman#'
+
+        // 截取字符串 name = cc
+
+        // let newStr = str.match(/\?(\S*)#/)
+
+        // 截取字符串 ycc
+
+        // let newStr = str.match(/(\S*)\?/)[1]
+
+        // 截取字符串 name = cc & sex=woman
+
+        // let newStr = str.match(/\?(\S*)/)[1]
+
+        // console.log(newStr);
+    </script>
+</body>
+
+</html>
