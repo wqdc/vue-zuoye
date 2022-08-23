@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function sleep(res) {
+      // console.log(1);
+      let p = new Promise(function (resolve, reject) {
+        //做一些异步操作
+        setTimeout(function () {
+          // console.log('执行完成Promise');
+          resolve('要返回的数据可以任何数据例如接口返回数据');
+        }, res);
+      })
+    }
+// sleep(3000)
+
+
+    function sleep(res) {
+      // todo...
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // main()
+          resolve('你好')
+        }, res)
+
+      })
+      return p
+    }
+
+    async function main() {
+     const n = await sleep(3000)
+      console.log(n);
+    }
+// function se() {
+//   setTimeout(()=>{
+//         console.log(2);
+//       },3000)
+// }
+//     async function a() {
+//       await se()
+//       console.log(1);
+//     }
+// a()
+    main() // 延迟三秒打印你好
+
+  </script>
+</body>
+
+</html>
