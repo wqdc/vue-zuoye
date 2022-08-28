@@ -1,9 +1,9 @@
 <template>
   <div>
     <p>请选择你要购买的书籍</p>
-    <ul v-for="(item,index) in arr" :key="index">
+    <ul v-for="(item, index) in arr" :key="index">
       <li>
-        <button @click="btn(index)">{{item.name}}</button>
+        <button @click="btn(index)">{{ item.name }}</button>
       </li>
     </ul>
     <table border="1" width="500" cellspacing="0">
@@ -14,15 +14,15 @@
         <th>数量</th>
         <th>合计</th>
       </tr>
-      <tr v-for="(item,index) in arr" :key="index">
-        <th>{{index}}</th>
-        <th>{{item.name}}</th>
-        <th>{{item.price}}</th>
-        <th>{{item.count}}</th>
-        <th>{{item.price*item.count}}</th>
+      <tr v-for="(item, index) in arr" :key="index">
+        <th>{{ index }}</th>
+        <th>{{ item.name }}</th>
+        <th>{{ item.price }}</th>
+        <th>{{ item.count }}</th>
+        <th>{{ item.price * item.count }}</th>
       </tr>
     </table>
-    <p>总价格为:{{money}}</p>
+    <p>总价格为:{{ money }}</p>
   </div>
 </template>
 
@@ -52,30 +52,33 @@ export default {
           count: 0,
         },
       ],
-      price:0
+      price: 0,
     };
   },
-  methods:{
-    btn(ind){
-    console.log(this.arr[ind]);
-    this.arr[ind].count++
-    return this.money = this.arr[ind].count*this.arr[ind].price
-  }
-  },
-computed:{
-  money:{
-    set(val){
-      console.log(val);
-      // this.price = val
+  methods: {
+    btn(ind) {
+      console.log(this.arr[ind]);
+      this.arr[ind].count++;
+      return (this.money = this.arr[ind].count * this.arr[ind].price);
     },
-    get(){
-     return this.arr.reduce((acc,item) => acc += item.price*item.count,0)
-    // return this.price
-    }
-  }
-//   money:{
-// return this.arr.reduce((acc,item) => acc += item.price*item.count,0)
-// }
-}
+  },
+  computed: {
+    // money:{
+    //   set(val){
+    //     console.log(val);
+    //     // this.price = val
+    //   },
+    //   get(){
+    //    return this.arr.reduce((acc,item) => acc += item.price*item.count,0)
+    //   // return this.price
+    //   }
+    // }
+    money() {
+      return this.arr.reduce(
+        (acc, item) => (acc += item.price * item.count),
+        0
+      );
+    },
+  },
 };
 </script>
